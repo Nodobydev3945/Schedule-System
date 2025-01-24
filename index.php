@@ -29,6 +29,12 @@
                 case 'contatos':
                     include("pages/contatos/contatos.php");
                     break;
+                case 'cad-contato':
+                    include("pages/contatos/cad-contato.php");
+                    break;
+                case 'inserir-contato':
+                    include("pages/contatos/inserir-contato.php");
+                    break;
                 case 'tarefas':
                     include("pages/tarefas/tarefas.php");
                     break;   
