@@ -4,5 +4,4 @@
     define("USER", "root");
     define("PASSWORD", "");
     define("BASE", "dbschedulesystem");
-
 ?>

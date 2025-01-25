@@ -16,6 +16,10 @@
             <input type="tel" name="telefoneContato" placeholder="(xx) xxxxx-xxxx">
         </div>
         <div>
+            <label for="enderecoContato">Endereço: </label>
+            <input type="text" name="enderecoContato" placeholder="Rua/Bairro/Avenida e nº">
+        </div>
+        <div>
             <label for="sexoContato">Sexo: </label>
             <input type="text" name="sexoContato">
         </div>
