@@ -1,1 +1,1 @@
-# Sechedule-System
+# Schedule-System
