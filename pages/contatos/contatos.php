@@ -1,16 +1,21 @@
+<br>
 <header>
-    <h3>Contatos</h3>
+    <h3><i class="bi bi-person-square"></i> Contatos</h3>
 </header>
 <div>
-    <a href="index.php?menuop=cad-contato">Novo Contato</a>
+    <a class="btn btn-outline-secondary mb-3" href="index.php?menuop=cad-contato"><i class="bi bi-person-plus-fill"></i> Novo Contato</a>
 </div>
 <div>
     <form action="index.php?menuop=contatos" method="post">
-        <input type="text" name="txt_pesquisa" id="">
-        <input type="submit" value="Pesquisar">
+        <div class="input-group">
+            <input class="form-control" type="text" name="txt_pesquisa" id="">
+            <button class="btn btn-outline-success" type="submit" value="Pesquisar"><i class="bi bi-search"></i> Pesquisar</button>
+        </div>
     </form>
 </div>
-<table border="1">
+<br>
+<div class="tabela">
+<table class="table table-dark table-hover table-bordered table-lg">
     <thead>
         <tr>
             <th>ID</th>
@@ -58,48 +63,53 @@
 
         ?>
         <tr>
-            <td><?=$dados["idContato"] ?></td>
-            <td><?=$dados["nomeContato"] ?></td>
-            <td><?=$dados["emailContato"] ?></td>
-            <td><?=$dados["telefoneContato"] ?></td>
-            <td><?=$dados["enderecoContato"] ?></td>
-            <td><?=$dados["sexoContato"] ?></td>
-            <td><?=$dados["dataNascContato"] ?></td>
-            <td><a href="index.php?menuop=editar-contato&idContato=<?=$dados["idContato"] ?> ">Editar</a></td>
-            <td><a href="index.php?menuop=excluir-contato&idContato=<?=$dados["idContato"] ?> ">Excluir</a></td>
+            <td class="text-nowrap"><?=$dados["idContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["nomeContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["emailContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["telefoneContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["enderecoContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["sexoContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["dataNascContato"] ?></td>
+            <td class="text-center"><a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-contato&idContato=<?=$dados["idContato"] ?> "><i class="bi bi-pencil-square"></i></a></td>
+            <td class="text-center"><a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-contato&idContato=<?=$dados["idContato"] ?> "><i class="bi bi-trash-fill"></i></a></td>
         </tr>
         <?php
             }
         ?>
     </tbody>
 </table>
-<br>
-<?php
-
+</div>
+<ul class="pagination">
+    <?php
     $sqlTotal = "SELECT idContato FROM tdcontatos";
     $qrTotal = mysqli_query($conn, $sqlTotal) or die (mysqli_error($conn));
     $numTotal = mysqli_num_rows($qrTotal);
+
     $totalPagina = ceil($numTotal / $quantity);
-    echo "Total de Registros: $numTotal <br>";
-echo '<a href="?menuop=contatos&page=1">Primeira Página</a>';
 
-if ($page > 1) {
-    echo '<a href="?menuop=contatos&page=' . ($page - 1) . '"> << </a>';
-}
+    echo '<li class="page-item"><span class="page-link"> Total de Registros: ' . $numTotal . '</span></li><br>';
+    echo '<li class="page-item"> <a href="?menuop=contatos&page=1" class="page-link">Primeira Página</a> </li>';
 
-for ($i = 1; $i <= $totalPagina; $i++) {
-    if ($i >= ($page - 5) && $i <= ($page + 5)) {
-        if ($i == $page) {
-            echo $i;
-        } else {
-            echo '<a href="?menuop=contatos&page=' . $i . '">' . $i . '</a> ';
+    if ($page > 1) {
+        echo '<li class="page-item"> <a class="page-link" href="?menuop=contatos&page=' . ($page - 1) . '"> << </a> </li>';
+    }
+
+    for ($i = 1; $i <= $totalPagina; $i++) {
+        if ($i >= ($page - 5) && $i <= ($page + 5)) {
+            if ($i == $page) {
+                echo '<li class="page-item"><span class="page-link active">' . $i . '</span></li>';
+            } else {
+                echo '<li class="page-item"><a href="?menuop=contatos&page=' . $i . '" class="page-link"> ' . $i . '</a></li>';
+            }
         }
     }
-}
 
-if ($page < $totalPagina) {
-    echo '<a href="?menuop=contatos&page=' . ($page + 1) . '"> >> </a>';
-}
+    if ($page < $totalPagina) {
+        echo '<li class="page-item"> <a href="?menuop=contatos&page=' . ($page + 1) . '" class="page-link"> >> </a> </li>';
+    }
 
-echo '<a href="?menuop=contatos&page=' . $totalPagina . '">Última Página</a>'
-?>
+    echo ' <li class="page-item"> <a href="?menuop=contatos&page=' . $totalPagina . '" class="page-link">Última Página</a> </li>';
+    ?>
+</ul>
+
+</ul>
