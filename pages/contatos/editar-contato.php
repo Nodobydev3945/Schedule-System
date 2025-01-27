@@ -8,7 +8,8 @@
 <header>
     <h3><i class="bi bi-pencil-square"></i> Editar Contato</h3>
 </header>
-<div>
+<div class="row">
+<div class="col-6">
     <form class="needs-validation" novalidate action="index.php?menuop=atualizar-contato" method="post">
     <div class="valid-feedback">
         Preenchido.
@@ -70,4 +71,46 @@
             <input class="btn btn-warning" type="submit" value="Atualizar" name="btn-Atualizar">
         </div>
     </form>
+</div>
+<div class="col-6">
+    <?php
+       if($dados["nomeFotoContato"]=="" || !file_exists('./paginas/contatos/fotos-contatos/'. $dados["nomeFotoContato"])){
+            $nomeFoto = "SemFoto.jpg";
+       }else{
+            $nomeFoto = $dados["nomeFotoContato"];
+       }
+    ?>
+    <div class="mb-3">
+        <img id="foto-contato" class="img-fluid img-thumbnail" width="200" src="./pages/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-info" id="btn-editar-foto">
+            <i class="bi bi-camera-fill"></i> Editar Foto
+        </button>
+    </div>
+    <div id="editar-foto">
+                <form id="form-upload-foto" class="mb-3" action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="idContato" value="<?=$idContato?>">
+                <label class="form-label" for="arquivo">Selecione um arquivo de imagem da foto</label>
+                    <div class="input-group">
+                        <input class="form-control" type="file" name="arquivo" id="arquivo">
+                        <input id="btn-enviar-foto" class="btn btn-secondary" type="submit" value="Enviar">
+                    </div>
+
+                </form>
+                <div id="mensagem" class="mb-3 alert alert-success">
+                    
+                </div>
+                <div id="preloader" class="progress">
+                    <div id="barra"
+                    class="progress-bar bg-danger" 
+                    role="progressbar" 
+                    style="width: 0%" 
+                    aria-valuenow="0" 
+                    aria-valuemin="0" 
+                    aria-valuemax="100">0%</div>
+                </div>  
+    </div>  
+</div>
 </div>
