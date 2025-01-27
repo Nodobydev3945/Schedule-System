@@ -42,7 +42,7 @@
         </nav>
     </div>
 </header>
-
+<br>
     <main>
         <div class="container">
         <?php
