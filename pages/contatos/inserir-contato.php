@@ -25,5 +25,5 @@
     ";
     mysqli_query($conn,$sql) or die("Erro ao executar a consulta. " . mysqli_error($conn));
 
-    echo ("O registro foi inserido com sucesso! 🦖");
+    echo ("O registro foi inserido com sucesso! 🦖 ");
 ?>

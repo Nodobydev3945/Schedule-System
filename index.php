@@ -14,31 +14,35 @@
     <title>Sistema de Agendamento 1.0</title>
 </head>
 <body>
-    <header class="bg-dark">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
-                    <img src="img/logo_agendador.png" alt="Sistema de Agendamento" srcset="" width="120">
-                </a>
-                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link active" href="index.php?menuop=home">Home</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?menuop=contatos">Contato</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?menuop=tarefas">Tarefas</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?menuop=eventos">Eventos</a> 
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="bg-dark">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo_agendador.png" alt="Sistema de Agendamento" width="120">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php?menuop=home">Home</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?menuop=contatos">Contato</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?menuop=tarefas">Tarefas</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?menuop=eventos">Eventos</a> 
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
     <main>
         <div class="container">
         <?php
@@ -85,5 +89,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="./js/validation.js"></script>
 </body>
 </html>
