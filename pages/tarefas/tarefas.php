@@ -1,9 +1,21 @@
+<?php
+    $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ? $_POST["txt_pesquisa"] : "";
+
+ // Verificar se os parâmetros estão definidos antes de executar o UPDATE
+if (isset($_GET['idTarefa']) && isset($_GET['statusTarefa'])) {
+    $idTarefa = $_GET['idTarefa'];
+    $statusTarefa = ($_GET['statusTarefa'] == '0') ? '1' : '0';
+
+    $sql = "UPDATE tdtarefas SET statusTarefa = {$statusTarefa} WHERE idTarefa = {$idTarefa}";
+    $rs = mysqli_query($conn, $sql);
+}
+?>
 <br>
 <header>
     <h3><i class="bi bi-list-task"></i> Tarefas</h3>
 </header>
 <div>
-    <a class="btn btn-outline-secondary mb-3" href="index.php?menuop=cad-contato"><i class="bi bi-file-plus-fill"></i> Nova Tarefa</a>
+    <a class="btn btn-outline-secondary mb-3" href="index.php?menuop=cad-tarefa"><i class="bi bi-file-plus-fill"></i> Nova Tarefa</a>
 </div>
 <div>
     <form action="index.php?menuop=tarefas" method="post">
@@ -35,7 +47,6 @@
         <?php
             $quantity = 10;
             $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
-            $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ? $_POST["txt_pesquisa"] : "";
 
             $init = ($quantity * $page) - $quantity;
 
@@ -64,7 +75,7 @@
         ?>
         <tr>
             <td class="text-center">
-                <a class="btn btn-secondary btn-sm" href="#">
+                <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&page=<?=$page?>&idTarefa=<?=$dados['idTarefa']?>&statusTarefa=<?=$dados['statusTarefa']?>">
                     <?php
                         if($dados['statusTarefa'] == 0) {
                             echo '<i class="bi bi-square"></i>';

@@ -1,3 +1,6 @@
+<?php
+    $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ? $_POST["txt_pesquisa"] : "";
+?>
 <br>
 <header>
     <h3><i class="bi bi-person-square"></i> Contatos</h3>
@@ -8,7 +11,7 @@
 <div>
     <form action="index.php?menuop=contatos" method="post">
         <div class="input-group">
-            <input class="form-control" type="text" name="txt_pesquisa" id="">
+            <input class="form-control" type="text" name="txt_pesquisa" value="<?=$txt_pesquisa?>">
             <button class="btn btn-outline-success" type="submit" value="Pesquisar"><i class="bi bi-search"></i> Pesquisar</button>
         </div>
     </form>
@@ -33,7 +36,6 @@
         <?php
             $quantity = 10;
             $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
-            $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ? $_POST["txt_pesquisa"] : "";
 
             $init = ($quantity * $page) - $quantity;
 
