@@ -73,7 +73,7 @@
                     include("pages/tarefas/tarefas.php");
                     break; 
                 case 'cad-tarefa':
-                    include("pages/tarefas/cad-tarefas.php");
+                    include("pages/tarefas/cad-tarefa.php");
                     break;
                 case 'inserir-tarefa':
                     include("pages/contatos/inserir-tarefa.php");
@@ -110,6 +110,6 @@
     <script src="./js/upload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-
+    <script src="./js/js-schedule.js"></script>
 </body>
 </html>

@@ -57,8 +57,8 @@
                     <input class="form-control" type="date" name="dataNascContato" required>
                 </div>
             </div>
-        </div>
-        <div class="mb-3">
+        </div><br>
+        <div class="mb-3 input-group-lg">
             <input class="btn btn-success" type="submit" value="Adicionar" name="btn-Adicionar">
         </div>
     </form>

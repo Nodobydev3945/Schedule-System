@@ -30,6 +30,7 @@
             <th>Data de Nascimento</th>
             <th>Editar</th>
             <th>Excluir</th>
+            <th>Favorito</th>
         </tr>
     </thead>
     <tbody>
@@ -52,11 +53,12 @@
             ELSE
                 'NÃO ESPECÍFICADO'
             END AS sexoContato,
-            DATE_FORMAT(dataNascContato, '%d/%m/%Y') AS dataNascContato
+            DATE_FORMAT(dataNascContato, '%d/%m/%Y') AS dataNascContato,
+            flagFavoritoContato
             FROM tdcontatos 
             WHERE idContato='{$txt_pesquisa}' OR
             nomeContato LIKE '%{$txt_pesquisa}%'
-            ORDER BY  idContato ASC
+            ORDER BY flagFavoritoContato DESC, idContato ASC
             LIMIT $init, $quantity
             ";
             $rs = mysqli_query($conn, $sql) or die("Erro ao executar a consulta!" . mysqli_error($conn));
@@ -74,6 +76,19 @@
             <td class="text-nowrap"><?=$dados["dataNascContato"] ?></td>
             <td class="text-center"><a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-contato&idContato=<?=$dados["idContato"] ?> "><i class="bi bi-pencil-square"></i></a></td>
             <td class="text-center"><a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-contato&idContato=<?=$dados["idContato"] ?> "><i class="bi bi-trash-fill"></i></a></td>
+            <td class="text-center">
+                <?php
+                    if($dados["flagFavoritoContato"] == 1) {
+                        echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Favorito\" id=\"{$dados["idContato"]}\">
+                        <i class=\"bi bi-star-fill\"></i>
+                        </a>";
+                    } else {
+                        echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Não Favorito\" id=\"{$dados["idContato"]}\">
+                        <i class=\"bi bi-star\"></i>
+                        </a>";
+                    }
+                ?>
+            </td>
         </tr>
         <?php
             }
