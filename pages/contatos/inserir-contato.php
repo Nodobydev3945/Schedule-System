@@ -2,12 +2,12 @@
     <h3>Inserir Contato</h3>
 </header>
 <?php
-    $nomeContato = mysqli_real_escape_string($conn,$_POST["nomeContato"]);
-    $emailContato = mysqli_real_escape_string($conn,$_POST["emailContato"]);
-    $telefoneContato = mysqli_real_escape_string($conn,$_POST["telefoneContato"]);
-    $enderecoContato = mysqli_real_escape_string($conn,$_POST["enderecoContato"]);
-    $sexoContato = mysqli_real_escape_string($conn,$_POST["sexoContato"]);
-    $dataNascContato = mysqli_real_escape_string($conn,$_POST["dataNascContato"]);
+    $nomeContato = strip_tags(mysqli_real_escape_string($conn,$_POST["nomeContato"]));
+    $emailContato = strip_tags(mysqli_real_escape_string($conn,$_POST["emailContato"]));
+    $telefoneContato = strip_tags(mysqli_real_escape_string($conn,$_POST["telefoneContato"]));
+    $enderecoContato = strip_tags(mysqli_real_escape_string($conn,$_POST["enderecoContato"]));
+    $sexoContato = strip_tags(mysqli_real_escape_string($conn,$_POST["sexoContato"]));
+    $dataNascContato = strip_tags(mysqli_real_escape_string($conn,$_POST["dataNascContato"]));
     $sql = "INSERT INTO tdcontatos (nomeContato,
         emailContato,
         telefoneContato,

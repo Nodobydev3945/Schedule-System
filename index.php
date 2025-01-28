@@ -76,16 +76,16 @@
                     include("pages/tarefas/cad-tarefa.php");
                     break;
                 case 'inserir-tarefa':
-                    include("pages/contatos/inserir-tarefa.php");
+                    include("pages/tarefas/inserir-tarefa.php");
                     break;
                 case 'editar-tarefa':
-                    include("pages/contatos/editar-tarefa.php");
+                    include("pages/tarefas/editar-tarefa.php");
                     break;
                 case 'atualizar-tarefa':
-                    include("pages/contatos/atualizar-tarefa.php");
+                    include("pages/tarefas/atualizar-tarefa.php");
                     break;
                 case 'excluir-tarefa':
-                    include("pages/contatos/excluir-tarefa.php");
+                    include("pages/tarefas/excluir-tarefa.php");
                     break;   
                 case 'eventos':
                     include("pages/eventos/eventos.php");

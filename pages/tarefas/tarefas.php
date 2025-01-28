@@ -92,7 +92,28 @@ if (isset($_GET['idTarefa']) && isset($_GET['statusTarefa'])) {
             <td class="text-wrap text-center"><?=$dados["horaConclusaoTarefa"] ?></td>
             <td class="text-wrap text-center"><?=$dados["dataLembreteTarefa"] ?></td>
             <td class="text-wrap text-center"><?=$dados["horaLembreteTarefa"] ?></td>
-            <td class="text-wrap text-center"><?=$dados["recorrenciaTarefa"] ?></td>
+            <td class="text-wrap text-center">
+                <?php
+                    $reco = $dados['recorrenciaTarefa'];
+                    switch ($reco) {
+                        case 1:
+                            echo "Diariamente";
+                            break;
+                        case 2:
+                            echo "Semanalmente";
+                            break;
+                        case 3:
+                            echo "Mensalmente";
+                            break;
+                        case 4:
+                            echo "Anualmente";
+                            break;
+                        default:
+                            echo "Não Recorrente";
+                            break;
+                    }
+                ?>
+            </td>
             <td class="text-center"><a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-tarefa&idTarefa=<?=$dados["idTarefa"] ?> "><i class="bi bi-pencil-square"></i></a></td>
             <td class="text-center"><a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-tarefa&idTarefa=<?=$dados["idTarefa"] ?> "><i class="bi bi-trash-fill"></i></a></td>
         </tr>
