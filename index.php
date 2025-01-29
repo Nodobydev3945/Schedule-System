@@ -90,6 +90,21 @@
                 case 'eventos':
                     include("pages/eventos/eventos.php");
                     break;
+                case 'cad-evento':
+                    include("pages/eventos/cad-evento.php");
+                    break;
+                case 'inserir-evento':
+                    include("pages/eventos/inserir-evento.php");
+                    break;
+                case 'editar-evento':
+                    include("pages/eventos/editar-evento.php");
+                    break;
+                case 'atualizar-evento':
+                    include("pages/eventos/atualizar-evento.php");
+                    break;
+                case 'excluir-evento':
+                    include("pages/eventos/excluir-evento.php");
+                    break;   
                 default:
                     include("pages/home/home.php");
                     break;
