@@ -1,5 +1,25 @@
 <?php
-    include("db/connection.php");
+    include("./db/connection.php");
+    session_start();
+    if(isset($_SESSION['loginUser']) and isset($_SESSION['senhaUser'])) {
+        $loginUser = $_SESSION['loginUser'];
+        $senhaUser = $_SESSION['senhaUser'];
+        $nomeUser = $_SESSION['nomeUser'];
+
+        $sql = "SELECT * FROM tdusuarios WHERE loginUser = '{$loginUser}' and senhaUser = '{$senhaUser}'";
+        $rs = mysqli_query($conn, $sql);
+        $dados = mysqli_fetch_assoc($rs);
+        $line = mysqli_num_rows($rs);
+        if($line == 0 ) {
+            session_unset();
+            session_destroy();
+            header('Location: login.php');
+            exit();
+        }
+    } else {
+        header('Location: login.php');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +58,12 @@
                         <a class="nav-link" href="index.php?menuop=eventos">Eventos</a> 
                     </li>
                 </ul>
+                <div class="navbar-nav w-100 justify-content-end">
+                    <a href="logout.php" class="nav-link">
+                        <i class="bi bi-person"></i>
+                        <?=$nomeUser?> Sair <i class="bi bi-box-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>

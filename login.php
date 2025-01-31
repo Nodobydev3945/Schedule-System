@@ -1,3 +1,30 @@
+<?php
+    include ("./db/connection.php");
+    $msg_error = "";
+
+    if(isset($_POST['loginUser']) && isset($_POST['senhaUser'])) {
+        $loginUser = mysqli_escape_string($conn, $_POST['loginUser']);
+        $senhaUser = hash('sha256', $_POST['senhaUser']);
+
+        $sql = "SELECT * FROM tdusuarios WHERE loginUser = '{$loginUser}' and senhaUser = '{$senhaUser}'";
+        $rs = mysqli_query($conn, $sql);
+        $dados = mysqli_fetch_assoc($rs);
+        $line = mysqli_num_rows($rs);
+
+        if($line != 0) {
+            session_start();
+            $_SESSION['loginUser'] = $loginUser;
+            $_SESSION['senhaUser'] = $senhaUser;
+            $_SESSION['nomeUser'] = $dados["nomeUser"];
+
+            header('Location: index.php');
+        } else {
+            $msg_error = "<div class='alert alert-danger mt-3'>
+                        <p>Usuário não encontrado ou a senha não confere.</p>
+                        </div>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +38,11 @@
 <body>
     <div class="container">
         <div class="row vh-100 align-items-center justify-content-center">
-            <div class="col-10 col-sm-8 col-md-6 col-lg-4 p-4 bg-white shadow rounded">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4 p-4 bg-white text-black shadow rounded">
                 <div class="row justify-content-center mb-4">
                     <img src="./img/logo_agendador.png" alt="Agendador" srcset="">
                 </div>
-                <form class="needs-validation" action="index.php" method="post" novalidate>
+                <form class="needs-validation" action="login.php" method="post" novalidate>
                     <div class="form-group">
                         <label class="" for="loginUser">Login: </label>
                         <div class="input-group mb-4">
@@ -27,14 +54,17 @@
                         </div>
                     </div>
                     <div class="form-group mb-4">
-                        <label class="" for="passUser">Senha: </label>
+                        <label class="" for="senhaUser">Senha: </label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                            <input class="form-control" type="password" name="passUser" id="passUser" required>
+                            <input class="form-control" type="password" name="senhaUser" id="senhaUser" required>
                             <div class="invalid-feedback">
                                 Informe a senha.
                             </div>
                         </div>
+                        <?php
+                            echo $msg_error;
+                        ?>
                     </div>
                     <button class="btn btn-success w-100"><i class="bi bi-box-arrow-right"></i> Entrar</button>
                 </form>
